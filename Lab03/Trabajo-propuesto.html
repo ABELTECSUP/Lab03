@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Casa de Cambio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Casa de Cambio</h2>
+        
+        <label for="fromCurrency">Selecciona la moneda de origen:</label>
+        <select id="fromCurrency">
+            <option value="USD">Dólar</option>
+            <option value="PEN">Soles</option>
+            <option value="EUR">Euros</option>
+        </select>
+
+        <label for="toCurrency">Selecciona la moneda de destino:</label>
+        <select id="toCurrency">
+            <option value="USD">Dólar</option>
+            <option value="PEN">Soles</option>
+            <option value="EUR">Euros</option>
+        </select>
+        
+        <label for="monto">Ingrese monto:</label>
+        <input type="number" id="monto">
+        
+        <button onclick="calcularTotal()">Cotizar</button>
+    </div>
+
+    <script>
+        function calcularTotal() {
+            const fromCurrency = document.getElementById("fromCurrency").value;
+            const toCurrency = document.getElementById("toCurrency").value;
+            const monto = parseFloat(document.getElementById("monto").value);
+
+            // Aquí debes agregar la lógica para calcular el total a recibir en función de las tasas de cambio reales
+            // Puedes obtener las tasas de cambio de una fuente confiable, como una API de conversión de divisas
+            
+            // Ejemplo de cálculo simple:
+            let tasaCambio = 1; // Tasa de cambio ficticia (1:1) por defecto
+
+            if (fromCurrency === "USD" && toCurrency === "PEN") {
+                tasaCambio = 4.0; // Cambiar esto con la tasa de cambio actual USD a PEN
+            } else if (fromCurrency === "USD" && toCurrency === "EUR") {
+                tasaCambio = 0.85; // Cambiar esto con la tasa de cambio actual USD a EUR
+            } // Puedes continuar con más conversiones
+
+            const totalRecibir = monto * tasaCambio;
+
+            alert(`Total a recibir: ${totalRecibir.toFixed(2)} ${toCurrency}`);
+        }
+    </script>
+</body>
+</html>
